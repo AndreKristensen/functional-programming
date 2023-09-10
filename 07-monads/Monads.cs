@@ -9,3 +9,5 @@
 // boxes are monads
 // a box is a container that can hold a value of any type
 // a box can be empty or it can hold a value (maybe)
+
+// Maybe<T> is a monad

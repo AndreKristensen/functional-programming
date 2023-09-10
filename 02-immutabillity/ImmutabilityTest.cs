@@ -12,7 +12,7 @@ public class ImmutabilityTests
         string lastName = "Doe";
 
         // Act
-        Person person = new(firstName, lastName);
+        PersonImmutable person = new(firstName, lastName);
 
         // Assert
         Assert.AreEqual(firstName, person.FirstName);

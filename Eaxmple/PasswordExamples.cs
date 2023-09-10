@@ -37,7 +37,7 @@ public class PasswordExamples
     public static readonly Func<string, bool> ContainLowerCaseLetters = password => new Regex("[a-z]+").IsMatch(password);
     public static readonly Func<string, bool> ContainNumbers = password => new Regex("[0-9]+").IsMatch(password);
 
-    public static bool ValidatePassword(string passowrd) =>
+    public static bool ValidatePasswordPolicy(string passowrd) =>
          new[]
          {
         AtleastTwelveCharacters,
@@ -47,7 +47,7 @@ public class PasswordExamples
          }.All(x => x(passowrd));
 
 
-    public static bool ValidatePassword2(string passowrd) =>
+    public static bool ValidatePasswordPolicy_2(string passowrd) =>
     passowrd.ValidatePassword(
         AtleastTwelveCharacters,
         ContainCaptialLetters,

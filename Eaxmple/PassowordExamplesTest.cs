@@ -50,8 +50,8 @@ public class PasswordExamplesTest
 
         // Act
         bool result = PasswordExamples.PasswordValidation(password);
-        bool result2 = PasswordExamples.ValidatePassword(password);
-        bool result3 = PasswordExamples.ValidatePassword2(password);
+        bool result2 = PasswordExamples.ValidatePasswordPolicy(password);
+        bool result3 = PasswordExamples.ValidatePasswordPolicy_2(password);
 
         // Assert
         Assert.IsTrue(result);
@@ -67,8 +67,8 @@ public class PasswordExamplesTest
 
         // Act
         bool result = PasswordExamples.PasswordValidation(password);
-        bool result2 = PasswordExamples.ValidatePassword(password);
-        bool result3 = PasswordExamples.ValidatePassword2(password);
+        bool result2 = PasswordExamples.ValidatePasswordPolicy(password);
+        bool result3 = PasswordExamples.ValidatePasswordPolicy_2(password);
 
         // Assert
         Assert.IsFalse(result);

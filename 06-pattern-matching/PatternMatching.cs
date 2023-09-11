@@ -6,57 +6,51 @@
 
 namespace functional_programming;
 
-record Rectangle(int Lenght, int Height) ;
-record Circle(int Radius) ;
-record Square(int Lenght) ;
-record Triangle(int Lenght, int Height);
+record Rectangle(int Length, int Height);
+record Circle(int Radius);
+record Square(int Length);
+record Triangle(int Length, int Height);
 
 
 public static class Shapes
 {
     // constant pattern
-// The constant pattern can be used to test whether an expression is 
-// equal to a specified constant. A popular use-case for the constant pattern is null checkingThe constant pattern can be used to test whether an expression is equal to a specified constant. 
-// A popular use-case for the constant pattern is null checking
     public static Func<object, bool> IsShapeNull = (shape) => shape is null;
-
-    
-// Declaration pattern
+ 
+    // Declaration pattern
     public static Func<object, bool> IsShapeSquare = (shape) => shape is Square;
 
     // Property pattern;
-    public static Func<object, bool> IsSpecificTriangle = (shape) => shape is Triangle { Lenght: 10, Height: 20 };
+    public static Func<object, bool> IsSpecificTriangle = (shape) => shape is Triangle { Length: 10, Height: 20 };
 
     //var pattern IsLengthMultipleOfThree
-    public static Func<object, bool> IsLengthMultipleOfThree = (shape) => shape is Rectangle { Lenght: var length } && length % 3 == 0;
+    public static Func<object, bool> IsLengthMultipleOfThree = (shape) => shape is Rectangle { Length: var length } && length % 3 == 0;
 
-// Tuple pattern
-
-// ReturnDescriptionOfShape
-    public static Func<object,int,int, string> ReturnDescriptionOfShape = (shape, lenght, height) => (shape, lenght, height) switch
+    // Tuple pattern
+    public static Func<object,int,int, string> ReturnDescriptionOfShape = (shape, length, height) => (shape, length, height) switch
     {
         (Rectangle, 2, 1) => "This is a small rectangle",
         (Triangle, 20, 10) => "This is a big triangle",
-        (Square, 10, _) => "Square with lenght 10",
+        (Square, 10, _) => "Square with length 10",
         (_,_,_) => "Unknown"
     };
 
-// Relational pattern
+    // Relational pattern
     public static Func<object, string> ReturnDescriptionOfShapeWithRelationalPattern = (shape) => shape switch
     {
-        Rectangle { Lenght: < 10 } => "This is a small rectangle",
+        Rectangle { Length: < 10 } => "This is a small rectangle",
         Triangle { Height: > 10 } => "This is a big triangle",
-        Square { Lenght: 10 } => "Square with lenght 10",
+        Square { Length: 10 } => "Square with length 10",
         _ => "Unknown"
     };
 
-    // Calculate area
+    // switch 
     public static Func<object, double> CalculateArea = (shape) => shape switch
     {
-        Rectangle { Lenght: var length, Height: var height } => length * height,
+        Rectangle { Length: var length, Height: var height } => length * height,
         Circle { Radius: var radius } => Math.PI * radius * radius,
-        Square { Lenght: var lenght } => lenght * lenght,
-        Triangle { Lenght: var lenght, Height: var height } => lenght * height / 2,
+        Square { Length: var length } => length * length,
+        Triangle { Length: var length, Height: var height } => length * height / 2,
         _ => throw new ArgumentException(message: "invalid shape", paramName: nameof(shape))
     };
   

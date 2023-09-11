@@ -6,10 +6,9 @@
 namespace functional_programming
 {
 
- public class PersonMutable
+    public class PersonMutable
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
@@ -23,7 +22,6 @@ namespace functional_programming
     public class PersonImmutable
     {
         public Guid Id { get; init; } = Guid.NewGuid();
-
         public string FirstName { get; }
         public string LastName { get; }
 
@@ -53,5 +51,6 @@ namespace functional_programming
         public string? FirstName { get; init; }
         public string? LastName { get; init; }
     }
+
 
 }

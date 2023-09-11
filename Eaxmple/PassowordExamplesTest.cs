@@ -11,8 +11,8 @@ public class PasswordExamplesTest
         // Arrange
         string password = "Abcdefghijklm123!";
 
-        bool result = PasswordExamples.AtleastTwelveCharacters(password);
-        bool result1 = PasswordExamples.ContainCaptialLetters(password);
+        bool result = PasswordExamples.AtLeastTwelveCharacters(password);
+        bool result1 = PasswordExamples.ContainCapitalLetters(password);
         bool result2 = PasswordExamples.ContainLowerCaseLetters(password);
         bool result3 = PasswordExamples.ContainNumbers(password);
 
@@ -29,8 +29,8 @@ public class PasswordExamplesTest
         // Arrange
 
         // Act
-        bool result = PasswordExamples.AtleastTwelveCharacters("password");
-        bool result1 = PasswordExamples.ContainCaptialLetters("password");
+        bool result = PasswordExamples.AtLeastTwelveCharacters("password");
+        bool result1 = PasswordExamples.ContainCapitalLetters("password");
         bool result2 = PasswordExamples.ContainLowerCaseLetters("ASDASD");
         bool result3 = PasswordExamples.ContainNumbers("password");
 

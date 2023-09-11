@@ -52,12 +52,10 @@ public class Exampels
     // logical what i want to do
     // higher order functions
 
-    public List<string> Example2()
-    {
-        return rickAndMortyCharactersCsv.Split(";")
-            .Select(row => row.Split(","))
-            .Where(column => "Alive".Equals(column[2]))
-            .Select(column => column[1])
-            .ToList();
-    }
+    public List<string> Example2() => rickAndMortyCharactersCsv.Split(";")
+             .Select(row => row.Split(","))
+             .Where(column => "Alive".Equals(column[2]))
+             .Select(column => column[1])
+             .ToList();
+
 }

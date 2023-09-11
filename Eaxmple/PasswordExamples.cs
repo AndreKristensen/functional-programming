@@ -32,26 +32,26 @@ public class PasswordExamples
         return true;
     }
 
-    public static readonly Func<string, bool> AtleastTwelveCharacters = password => password.Length > 11;
-    public static readonly Func<string, bool> ContainCaptialLetters = password => new Regex("[A-Z]+").IsMatch(password);
+    public static readonly Func<string, bool> AtLeastTwelveCharacters = password => password.Length > 11;
+    public static readonly Func<string, bool> ContainCapitalLetters = password => new Regex("[A-Z]+").IsMatch(password);
     public static readonly Func<string, bool> ContainLowerCaseLetters = password => new Regex("[a-z]+").IsMatch(password);
     public static readonly Func<string, bool> ContainNumbers = password => new Regex("[0-9]+").IsMatch(password);
 
-    public static bool ValidatePasswordPolicy(string passowrd) =>
+    public static bool ValidatePasswordPolicy(string password) =>
          new[]
          {
-        AtleastTwelveCharacters,
-        ContainCaptialLetters,
-        ContainLowerCaseLetters,
-        ContainNumbers,
-         }.All(x => x(passowrd));
+            AtLeastTwelveCharacters,
+            ContainCapitalLetters,
+            ContainLowerCaseLetters,
+            ContainNumbers,
+         }.All(x => x(password));
 
 
-    public static bool ValidatePasswordPolicy_2(string passowrd) =>
-    passowrd.ValidatePassword(
-        AtleastTwelveCharacters,
-        ContainCaptialLetters,
-        ContainLowerCaseLetters,
-        ContainNumbers);
+    public static bool ValidatePasswordPolicy_2(string password) => 
+        password.ValidatePassword(
+            AtLeastTwelveCharacters,
+            ContainCapitalLetters,
+            ContainLowerCaseLetters,
+            ContainNumbers);
 
 }

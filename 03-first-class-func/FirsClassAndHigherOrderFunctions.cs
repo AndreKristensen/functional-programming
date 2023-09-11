@@ -11,7 +11,6 @@ namespace functional_programming;
 public static class FirsClassAndHigherOrderFunctions
 {
     public static Func<string, string> Greet = name => $"Hello {name}!";
-
     public static Func<int, bool> IsOdd = x => x % 2 != 0;
 
     public static Func<int, int, int> Add = (x, y) => x + y;
@@ -20,17 +19,17 @@ public static class FirsClassAndHigherOrderFunctions
 
     public static int PerformOperation(Func<int, int, int> operation, int a, int b) => operation(a, b);
 
-    public static Func<int, Func<int, int>> CreateMultiplier = (factor) => (x) => x * factor;
-
-    public static Func<T2, T1, R> Swap<T1, T2, R>(this Func<T1, T2, R> func)
-    => (t2, t1) => func(t1, t2);
-
+    public static Func<T2, T1, R> Swap<T1, T2, R>(this Func<T1, T2, R> func) => (t2, t1) => func(t1, t2);
 
     public static Dictionary<string, Func<int, int, int>> MathOperations = new()
     {
-            { "add", Add },
-            { "subtract", Subtract },
-            { "divide", Divide }
-        };
+        { "add", Add },
+        { "subtract", Subtract },
+        { "divide", Divide }
+    };
+
+
+    public static Func<int, Func<int, int>> CreateMultiplier = (factor) => (x) => x * factor;
+
 }
 

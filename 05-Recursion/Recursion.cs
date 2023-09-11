@@ -16,8 +16,8 @@ public static class Recursion
 
     // factorial of n (n!) = 1 * 2 * 3 * 4....n
     // 5! = 1 * 2 * 3 * 4 * 5 = 120
-
     public static Func<int, int> Factorial = n => n == 0 ? 1 : n * Factorial(n - 1);
+
     public static int Factorial2(int n)
     {
         if (n == 0)

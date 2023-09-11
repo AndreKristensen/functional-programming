@@ -47,7 +47,7 @@ public class PatternMatchingTests
         string result = Shapes.ReturnDescriptionOfShape(shape, length, height);
 
         // Assert
-        Assert.AreEqual("Square with lenght 10", result);
+        Assert.AreEqual("Square with length 10", result);
     }
 
     [Test]
@@ -101,7 +101,7 @@ public class PatternMatchingTests
         string result = Shapes.ReturnDescriptionOfShapeWithRelationalPattern(shape);
 
         // Assert
-        Assert.AreEqual("Square with lenght 10", result);
+        Assert.AreEqual("Square with length 10", result);
     }
 
     [Test]

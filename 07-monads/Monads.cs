@@ -11,3 +11,21 @@
 // a box can be empty or it can hold a value (maybe)
 
 // Maybe<T> is a monad
+
+namespace functional_programming;
+
+public static class Monads
+{
+
+    public static string FarneheitToCelsius(decimal farenheit) =>
+        farenheit.ToIdentity()
+            .Bind(f => f - 32M)
+            .Bind(f => f * 5M)
+            .Bind(f => f / 9M)
+            .Bind(f => Math.Round(f, 2))
+            .Bind(f => $"{f}°C");
+
+    public static string FindRickAndMortyCharacter(int id) => id.ToMaybe()
+        .Bind(Exampels.FetchCharachtersById)
+        .Bind(name => $"{name} is a Rick and Morty character");
+}

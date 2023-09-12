@@ -1,12 +1,15 @@
 
+using Newtonsoft.Json;
 using NUnit.Framework.Internal;
 
 namespace functional_programming;
 
-public class Exampels
+public static class Exampels
 {
 
-    private readonly string rickAndMortyCharactersCsv = @"
+    // List of Characters from Rick and Morty
+
+    private static readonly string rickAndMortyCharactersCsv = @"
 1,Rick Sanchez,Alive,Human,,Male;
 2,Morty Smith,Alive,Human,,Male;
 3,Summer Smith,Alive,Human,,Female;
@@ -29,7 +32,7 @@ public class Exampels
 20,Ants in my Eyes Johnson,unknown,Human,Human with ants in his eyes,Male";
 
 
-    public List<string> Example1()
+    public static List<string> Example1()
     {
         var charactersSplit = rickAndMortyCharactersCsv.Split(";");
         var charactersAlive = new List<string>();
@@ -52,10 +55,19 @@ public class Exampels
     // logical what i want to do
     // higher order functions
 
-    public List<string> Example2() => rickAndMortyCharactersCsv.Split(";")
+    public static List<string> Example2() => rickAndMortyCharactersCsv.Split(";")
              .Select(row => row.Split(","))
              .Where(column => "Alive".Equals(column[2]))
              .Select(column => column[1])
              .ToList();
+    public static List<Character> Characters() => rickAndMortyCharactersCsv.Split(";")
+             .Select(row => row.Split(","))
+             .Select(column => new Character() {
+                Id = int.Parse(column[0]),
+                Name = column[1],
+             })
+             .ToList();
+
+    public static string? FetchCharachtersById(int id) => Characters().FirstOrDefault(c => c.Id == id)?.Name ?? null;
 
 }

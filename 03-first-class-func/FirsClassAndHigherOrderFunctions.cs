@@ -29,6 +29,7 @@ public static class FirsClassAndHigherOrderFunctions
     };
 
 
+    // CURRYING
     public static Func<int, Func<int, int>> CreateMultiplier = (factor) => (x) => x * factor;
 
 }

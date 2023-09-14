@@ -1,10 +1,8 @@
 
-using Newtonsoft.Json;
-using NUnit.Framework.Internal;
 
 namespace functional_programming;
 
-public static class Exampels
+public static class Examples
 {
 
     // List of Characters from Rick and Morty
@@ -60,14 +58,20 @@ public static class Exampels
              .Where(column => "Alive".Equals(column[2]))
              .Select(column => column[1])
              .ToList();
+
     public static List<Character> Characters() => rickAndMortyCharactersCsv.Split(";")
              .Select(row => row.Split(","))
-             .Select(column => new Character() {
-                Id = int.Parse(column[0]),
-                Name = column[1],
-             })
+             .Select(column => new Character(
+                int.Parse(column[0]),
+                column[1],
+                column[2],
+                column[3],
+                column[4],
+                column[5]))
              .ToList();
 
-    public static string? FetchCharachtersById(int id) => Characters().FirstOrDefault(c => c.Id == id)?.Name ?? null;
-
+    public static Character FetchCharactersById(int id)
+    {
+        return Characters().First(c => c.Id == id);
+    }
 }

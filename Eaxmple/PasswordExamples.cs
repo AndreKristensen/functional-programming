@@ -12,8 +12,8 @@ public class PasswordExamples
             return false;
         }
 
-        var captialLetters = new Regex("[A-Z]+").IsMatch(password);
-        if (!captialLetters)
+        var capitalLetters = new Regex("[A-Z]+").IsMatch(password);
+        if (!capitalLetters)
         {
             return false;
         }

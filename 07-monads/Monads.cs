@@ -16,9 +16,8 @@ namespace functional_programming;
 
 public static class Monads
 {
-
-    public static string FarneheitToCelsius(decimal farenheit) =>
-        farenheit.ToIdentity()
+    public static string FahrenheitToCelsius(decimal fahrenheit) =>
+        fahrenheit.ToIdentity()
             .Bind(f => f - 32M)
             .Bind(f => f * 5M)
             .Bind(f => f / 9M)
@@ -26,6 +25,6 @@ public static class Monads
             .Bind(f => $"{f}°C");
 
     public static string FindRickAndMortyCharacter(int id) => id.ToMaybe()
-        .Bind(Exampels.FetchCharachtersById)
-        .Bind(name => $"{name} is a Rick and Morty character");
+        .Bind(Examples.FetchCharactersById)
+        .Bind(character => $"{character.Name} is a Rick and Morty character");
 }

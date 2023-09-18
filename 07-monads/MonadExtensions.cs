@@ -14,22 +14,24 @@ public static class MonadExtensions
 
   public static Maybe<TToType> Bind<TFromType, TToType>(this Maybe<TFromType> @this, Func<TFromType, TToType> func)
   {
-    if (@this is Just<TFromType> just && !EqualityComparer<TFromType>.Default.Equals(just.Value, default))
+    switch (@this)
     {
-      try
-      {
-        return func(just).ToMaybe();
-      }
-      catch (Exception e)
-      {
-        Console.WriteLine(e.Message);
-        return new Error<TToType>(e);
-      }
-    }
-    else
-    {
-      return new Nothing<TToType>();
+      case Just<TFromType> just when !EqualityComparer<TFromType>.Default.Equals(just.Value, default):
+        {
+
+          try
+          {
+            return func(just).ToMaybe();
+          }
+          catch (Exception e)
+          {
+            return new Error<TToType>(e);
+          }
+        }
+      case Error<TFromType> error:
+        return new Error<TToType>(error.Exception);
+      default:
+        return new Nothing<TToType>();
     }
   }
-
 }

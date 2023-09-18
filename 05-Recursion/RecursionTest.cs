@@ -44,36 +44,6 @@ public class RecursionTests
     }
 
     [Test]
-    public void Fibonacci_ReturnsCorrectResult()
-    {
-        // Arrange
-        int n = 6;
-
-        // Act
-        int result = Recursion.Fibonacci(n);
-
-        // Assert
-        Assert.AreEqual(8, result);
-    }
-
-    [Test]
-    public void FibonacciList_ReturnsCorrectResult()
-    {
-        // Arrange
-        int n = 6;
-
-        // Act
-        List<int> result = Recursion.FibonacciList(n);
-
-        Console.WriteLine(result.Select(x => x.ToString()).Aggregate((x, y) => $"{x}, {y}"));
-        // Assert
-
-        Assert.AreEqual(8, result.Last());
-                Assert.IsTrue(result is [1, 1, 2, 3, 5, 8]);
-
-    }
-
-    [Test]
     public void Power_ReturnsCorrectResult()
     {
         // Arrange

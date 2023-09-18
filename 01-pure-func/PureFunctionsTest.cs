@@ -60,4 +60,12 @@ public class PureFunctionsTests
         // Assert
         result.Should().Be(2);
     }
+    public static List<string> names = new List<string>() { "1John", "2Melcy", "3Thor", "4John1", "5Melcy2", "6Thor2", "7John3", "8Melcy3", "9Thor3" };
+
+    [Test]
+    public void PureParallel_test()
+    {
+        var PureParallel = PureFunctions.PureParallel(names);
+        PureParallel.ForEach(Console.WriteLine);
+    }
 }

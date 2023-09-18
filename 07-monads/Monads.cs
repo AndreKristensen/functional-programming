@@ -24,7 +24,18 @@ public static class Monads
             .Bind(f => Math.Round(f, 2))
             .Bind(f => $"{f}°C");
 
+    public static Func<Character, Character> NameToUpperCase = (x) => throw new NotImplementedException();
+
     public static string FindRickAndMortyCharacter(int id) => id.ToMaybe()
         .Bind(Examples.FetchCharactersById)
+        // .Bind(NameToUpperCase)
         .Bind(character => $"{character.Name} is a Rick and Morty character");
+
+    public static string CelsiusToFahrenheit(decimal celsius) =>
+        celsius.ToMaybe()
+        .Bind(c => c * 9M)
+        .Bind(c => c / 5M)
+        .Bind(c => c + 32M)
+        .Bind(Math.Floor)
+        .Bind(c => $"{c}°F");
 }

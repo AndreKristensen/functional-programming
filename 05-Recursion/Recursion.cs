@@ -30,18 +30,11 @@ public static class Recursion
     // sum number x to y
     public static Func<int, int, int> Sum = (x, y) => x == y ? x : x + Sum(x + 1, y);
 
-    // fibonacci sequence
-    // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
-    public static Func<int, int> Fibonacci = n => n <= 1 ? n : Fibonacci(n - 1) + Fibonacci(n - 2);
-
-    // fibonacci sequence output list
-    public static Func<int, List<int>> FibonacciList = n => n <= 1 ? new List<int> { n } : FibonacciList(n - 1).Append(Fibonacci(n)).ToList();
-
     // power of a number
     // 2^3 = 2 * 2 * 2 = 8
     public static Func<int, int, int> Power = (x, y) => y == 0 ? 1 : x * Power(x, y - 1);
 
-    // count didigts of a number
+    // count digits of a number
     // 1234 = 4
     public static Func<int, int> CountDigits = n => n == 0 ? 0 : 1 + CountDigits(n / 10);
 
